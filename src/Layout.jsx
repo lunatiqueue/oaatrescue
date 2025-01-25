@@ -11,41 +11,14 @@ import { selectCounter } from './redux/selectors';
 import { decremented, incremented } from './redux/animalsSlice';
 import { CounterDouble } from './components/CounterDouble';
 
+
 export const Layout = () => {
     const value = useSelector(selectCounter);
     const dispatch = useDispatch();
     return (
         <>
         <header>
-                <nav>
-                    <ul>
-                        <li>
-                            <NavLink 
-                                to="/" 
-                                end
-                                className={({ isActive }) => (isActive ? 'active-link' : '')}
-                            >
-                                Home
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink 
-                                to="/about" 
-                                className={({ isActive }) => (isActive ? 'active-link' : '')}
-                            >
-                                About
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink 
-                                to="/adopt" 
-                                className={({ isActive }) => (isActive ? 'active-link' : '')}
-                            >
-                                Adopt
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
+                <Header/>
             </header>
         <main>
         <Suspense fallback={null}>
