@@ -28,6 +28,12 @@
   color: #61dafb;
 }
 
+.active-link {
+  font-weight: bold;
+  color: #61dafb; /* Example color for active link */
+  text-decoration: underline;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
