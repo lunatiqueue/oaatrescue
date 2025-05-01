@@ -1,56 +1,72 @@
 import { NavLink } from 'react-router-dom';
-import logo from '../logo512.png';
+import logo from '../Logo White.png';
 
 export const Header = () => {
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <NavLink className="navbar-brand" to="/">
-            <img src={logo} className="header-logo" alt="logo" height="60" />
+    <header style={{ height: '15vh' }}>
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{
+          height: '100%',
+          backgroundColor: '#248188',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <div className="container d-flex justify-content-between align-items-center">
+          {/* Logo */}
+          <NavLink className="navbar-brand p-0" to="/">
+            <img src={logo} alt="Logo" height="60" />
           </NavLink>
+
+          {/* Toggler */}
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span
+              className="navbar-toggler-icon"
+              style={{ filter: 'invert(1)' }}
+            />
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? 'active' : ''}`
-                  }
-                  to="/"
-                  end
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? 'active' : ''}`
-                  }
-                  to="/about"
-                >
-                  About
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) =>
-                    `nav-link ${isActive ? 'active' : ''}`
-                  }
-                  to="/adopt"
-                >
-                  Adopt
+
+          {/* Menu */}
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="mainNavbar"
+          >
+            <ul className="navbar-nav align-items-center">
+              {[
+                { to: '/about', label: 'About' },
+                { to: '/adopt', label: 'Adopt' },
+                { to: '/foster', label: 'Foster' },
+                { to: '/events', label: 'Events' },
+                { to: '/services', label: 'Services' },
+                { to: '/contact', label: 'Contact' },
+              ].map(({ to, label }) => (
+                <li className="nav-item" key={to}>
+                  <NavLink
+                    to={to}
+                    className={({ isActive }) =>
+                      `nav-link px-3 fw-normal ${
+                        isActive ? 'active-link' : 'text-white'
+                      }`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
+
+              {/* Donate Button */}
+              <li className="nav-item ms-3">
+                <NavLink to="/donate" className="btn btn-donate px-3 py-2">
+                  Donate
                 </NavLink>
               </li>
             </ul>
