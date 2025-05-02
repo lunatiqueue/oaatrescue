@@ -75,6 +75,18 @@ export const AnimalDetails = () => {
               <Link to="/foster">Learn about fostering →</Link>
             </p>
           </div>
+
+           {/* Adopt Now Button */}
+           <div className="adopt-me-cta mb-4">
+            <a
+              href="https://forms.gle/G9LH1Dd8kq3Kg9S38"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-adopt-me"
+            >
+              Adopt Me
+            </a>
+          </div>
         </aside>
 
         {/* MAIN */}

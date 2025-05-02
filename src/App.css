@@ -359,3 +359,20 @@ h1, h2, h3, h4, h5 {
 .btn-back:hover {
   background: #93d1da;
 }
+
+.btn-adopt-me {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #E8744B;
+  color: #FFFFFF;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.btn-adopt-me:hover {
+  background-color: #d0603f;
+}

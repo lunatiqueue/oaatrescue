@@ -9,17 +9,37 @@ export const ContactPage = () => {
     message: '',
   });
 
+  const [statusMessage, setStatusMessage] = useState('');
+
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: replace with real submission logic
-    alert(`Thank you, ${formData.name}! Your message has been sent.`);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+    setStatusMessage('Sending…');
 
+    try {
+      const res = await fetch('https://formspree.io/f/mpwdprqo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (res.ok) {
+        setStatusMessage(`Thanks, ${formData.name}! Your message has been sent.`);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        const errorData = await res.json();
+        setStatusMessage(errorData.error || 'Oops! Something went wrong.');
+      }
+    } catch (err) {
+      setStatusMessage('Network error. Please try again.');
+    }
+  }
   return (
     <div>
       {/* Header */}
@@ -46,6 +66,11 @@ export const ContactPage = () => {
             <div className="col-md-7 mb-4 mb-md-0">
               <h3 className="section-title mb-4">Get in Touch</h3>
               <form onSubmit={handleSubmit}>
+                {statusMessage && (
+                  <div className="alert alert-info" role="alert">
+                    {statusMessage}
+                  </div>
+                )}
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Name
@@ -119,7 +144,7 @@ export const ContactPage = () => {
               </p>
               <p style={{ fontSize: '1rem', color: '#231F20' }}>
                 <FaEnvelope className="me-2" />
-                info@oneatatimerescue.ca
+                oneatatimerescuebrandon@gmail.com
               </p>
               <p style={{ fontSize: '1rem', color: '#231F20' }}>
                 <FaPhone className="me-2" />
