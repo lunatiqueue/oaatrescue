@@ -6,15 +6,13 @@ import { Footer } from "./components/Footer";
 export const Layout = () => {
     return (
         <>
-        <header>
-                <Header/>
-            </header>
+        <Header/>
         <main>
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
         </main>
-        <footer><Footer/></footer>
+        <Footer/>
         </>
     );
 };
