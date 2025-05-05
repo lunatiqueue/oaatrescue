@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-import aboutHero from "../about.jpg";
+import aboutHero from "../images/about.jpg";
 import { FaHeart, FaBullseye, FaUsers, FaCheckCircle } from 'react-icons/fa';
 // import { useEffect } from "react";
 

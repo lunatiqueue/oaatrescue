@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaLink,
 } from "react-icons/fa";
+import { SiX } from 'react-icons/si';
 
 export const AnimalDetails = () => {
   const { id } = useParams();
@@ -59,7 +59,7 @@ export const AnimalDetails = () => {
                 <FaFacebookF />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <FaTwitter />
+                <SiX />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
@@ -86,6 +86,12 @@ export const AnimalDetails = () => {
             >
               Adopt Me
             </a>
+          </div>
+
+            {/* Our Location */}
+          <div className="rescue-location">
+            <strong>Our Shelter Location:</strong><br/>
+            Brandon, Manitoba, Canada
           </div>
         </aside>
 

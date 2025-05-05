@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import heroBanner from "../hero-picture.jpg";
-import secondHero from "../secondHero.jpg";
+import heroBanner from "../images/hero-picture.jpg";
+import secondHero from "../images/secondHero.jpg";
 
 import { useEffect, useState } from "react";
 
@@ -22,113 +22,111 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
-
-      {/* Fullscreen Hero Greeting */}
+    <main>
+      {/* 1. HERO */}
       <section
+        className="hero d-flex align-items-center justify-content-center"
         style={{
           backgroundImage: `url(${heroBanner})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "85vh",
-          position: "relative",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          height: '100vh',
+          position: 'relative'
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            bottom: "50px",
-            width: "100%",
-            textAlign: "center",
-            color: "#fff",
-          }}
-        >
-          <h1 className="display-4 section-title" style={{ fontWeight: "700", textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
-            New Beginnings<br />Start Here
-          </h1>
-        </div>
-      </section>
-
-      {/* Adoptable Pets Preview */}
-      <section className="py-5 text-center" style={{ backgroundColor: "#F9FAFB" }}>
-  <div className="container">
-    <h2 className="mb-3 section-title">Meet Our Pets</h2>
-    <p className="mb-4">A few of our furry friends currently up for adoption.</p>
-
-    <div className="row justify-content-center g-4">
-      {animals.length ? animals.map((animal) => (
-        <div className="col-md-4" key={animal._id}>
-          <div className="card shadow-sm h-100 border-0">
-            <img
-              src={animal.image}
-              className="card-img-top"
-              alt={animal.name}
-              style={{ height: "200px", objectFit: "cover" }}
-            />
-            <div className="card-body">
-              <h5 className="card-title">{animal.name}</h5>
-              <p className="card-text text-muted">{animal.breed}</p>
-              <p className="card-text text-muted">{animal.age} yrs • {animal.gender}</p>
-            </div>
-          </div>
-        </div>
-      )) : (
-        <p>Loading pets...</p>
-      )}
-    </div>
-
-    <Link to="/adopt" className="btn btn-outline-primary mt-4 px-4 py-2">
-      View All Pets
-    </Link>
-  </div>
-</section>
-
-      {/* Statistics Section */}
-      <section className="py-5" style={{ backgroundColor: "#F9FAFB" }}>
-        <div className="container text-center">
-          <div className="row">
-            <div className="col-md-4 mb-4">
-              <h2 className="display-4" style={{ color: "#BAD648", fontWeight: "700" }}>178</h2>
-              <p className="text-muted">Cats Saved in 2024</p>
-            </div>
-            <div className="col-md-4 mb-4">
-              <h2 className="display-4" style={{ color: "#93D1DA", fontWeight: "700" }}>56</h2>
-              <p className="text-muted">Dogs Saved in 2024</p>
-            </div>
-            <div className="col-md-4 mb-4">
-              <h2 className="display-4" style={{ color: "#E8744B", fontWeight: "700" }}>2,229</h2>
-              <p className="text-muted">Pets Saved Since 2018</p>
-            </div>
-          </div>
-          <Link to="/about" className="btn btn-outline-primary px-4 py-2 mt-3">
-            Find Out More
+        <div className="hero-overlay" />
+        <div className="hero-content text-center text-white">
+          <h1>New Beginnings</h1>
+          <h2>Start Here</h2>
+          <Link to="/adopt" className="btn btn-hero mt-3">
+            Adopt Today
           </Link>
         </div>
       </section>
 
-      {/* Hero Left - Info Right Section */}
-      <section className="py-5 bg-white">
+      {/* 2. MEET OUR PETS */}
+      <section className="meet-pets py-5 text-center" style={{ backgroundColor: '#F9FAFB' }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6 mb-4 mb-md-0">
+          <h2 className="section-title">Meet Our Pets</h2>
+          <p className="section-subtitle mb-5">
+            Our furry friends waiting for loving homes.
+          </p>
+          <div className="row justify-content-center g-4">
+            {animals.length ? animals.map(a => (
+              <div className="col-md-4" key={a._id}>
+                <Link to={`/animal/${a._id}`} className="pet-card d-block text-decoration-none shadow-sm">
+                  <div
+                    className="pet-img"
+                    style={{
+                      backgroundImage: `url(${a.image})`,
+                      height: '250px',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      borderRadius: '8px 8px 0 0'
+                    }}
+                  />
+                  <div className="pet-info p-3 bg-white">
+                    <h5 className="mb-1">{a.name}</h5>
+                    <p className="text-muted mb-0">
+                      {a.age} yrs &bull; {a.gender}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            )) : (
+              <p>Loading pets…</p>
+            )}
+          </div>
+          <Link to="/adopt" className="btn btn-outline-primary mt-4">
+            View All Pets
+          </Link>
+        </div>
+      </section>
+
+      {/* 3. STATS + HELP */}
+      <section className="help-stats py-5" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="container">
+          <div className="row gx-5 align-items-center">
+            {/* Left image */}
+            <div className="col-lg-6 mb-4 mb-lg-0">
               <img
                 src={secondHero}
                 alt="How to help"
                 className="img-fluid rounded shadow-sm"
               />
             </div>
-            <div className="col-md-6">
-              <h2 className="section-title mb-3" style={{ fontWeight: "700" }}>How You Can Help?</h2>
-              <p style={{ fontSize: "1.1rem", color: "#4F4F4F" }}>
-                One At A Time Rescue is driven by the belief that every animal deserves a second chance. You can make that possible.
-              </p>
-              <div className="d-flex flex-wrap gap-3 mt-4">
-                <Link to="/about#foster" className="btn btn-primary px-4 py-2" style={{ backgroundColor: "#BAD648", borderColor: "#BAD648", color: "#073242" }}>
+
+            {/* Right stats + help */}
+            <div className="col-lg-6 d-flex flex-column" style={{ height: '100%' }}>
+              {/* Stats (top) */}
+              <div className="stats d-flex justify-content-between mb-5">
+                <div className="text-center">
+                  <h3 className="display-5" style={{ color: '#BAD648' }}>178</h3>
+                  <p className="mb-0 text-muted">Cats Saved in 2024</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="display-5" style={{ color: '#93D1DA' }}>56</h3>
+                  <p className="mb-0 text-muted">Dogs Saved in 2024</p>
+                </div>
+                <div className="text-center">
+                  <h3 className="display-5" style={{ color: '#E8744B' }}>2,229</h3>
+                  <p className="mb-0 text-muted">Pets Saved Since 2018</p>
+                </div>
+              </div>
+
+              {/* How You Can Help (bottom) */}
+              <div className="mt-auto">
+                <h2 className="section-title">How You Can Help?</h2>
+                <p className="section-text mb-4">
+                  We rescue one pet at a time—but we need your support.
+                  Foster, donate, or share our mission to make a real difference.
+                </p>
+                <Link to="/foster" className="btn btn-foster me-2">
                   Foster With Us
                 </Link>
-                <a href="/donate" className="btn btn-primary px-4 py-2" style={{ backgroundColor: "#E8744B", borderColor: "#E8744B" }}>
+                <Link to="/donate" className="btn btn-donate">
                   Donate Today
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -136,44 +134,125 @@ export const HomePage = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-5 bg-white text-center">
-        <div className="container">
-          <h2 className="mb-5 section-title">How It Works</h2>
-          <div className="row g-4">
-            <div className="col-md-4">
-              <div className="card border-0 h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title">1. Find a Pet</h5>
-                  <p className="card-text text-muted">
-                    Browse adoptable animals and find your perfect match.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card border-0 h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title">2. Submit an Application</h5>
-                  <p className="card-text text-muted">
-                    Fill out a short adoption form to get started.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card border-0 h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title">3. Meet & Adopt</h5>
-                  <p className="card-text text-muted">
-                    Once approved, welcome your new best friend home.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section
+  className="adopt-section py-5"
+  style={{ backgroundColor: '#231F20', color: '#FFFFFF' }}
+>
+  <div className="container">
 
+    {/* Heading */}
+    <div className="text-center mb-5">
+      <h2 className="section-title" style={{ color: '#BAD648' }}>
+        How to Adopt
+      </h2>
+      <h3 className="section-subtitle" style={{ color: '#93D1DA' }}>
+        From Us
+      </h3>
     </div>
+
+    {/* Vertical Steps */}
+    <div
+  className="steps-vertical mx-auto mb-5"
+  style={{ maxWidth: '400px' }}
+>
+  {[
+    'Explore Our Available Animals',
+    'Complete an Adoption Application',
+    'Virtual Home Tour',
+    'Meet & Greet',
+    'Pay Adoption Fee'
+  ].map((text, idx) => (
+    <div key={idx} className="step-item d-flex align-items-start mb-4">
+      <div className="step-number">{idx + 1}</div>
+      <div className="step-text">
+        <h5 className="mb-1">Step {idx + 1}</h5>
+        <p className="mb-0">{text}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+    {/* Fees & Inclusions */}
+    <div className="mb-5">
+      <h4 className="section-subtitle mb-3" style={{ color: '#FFFFFF' }}>
+        Adoption Fees &amp; Inclusions
+      </h4>
+      <div className="row">
+        {/* Puppies */}
+        <div className="col-md-6 mb-4">
+          <h5>
+            Puppies (Under 1 year old){' '}
+            <span style={{ color: '#BAD648' }}>$450</span>
+          </h5>
+          <p style={{ fontSize: '0.9rem', color: '#EDEDED' }}>
+            Includes age appropriate vaccines, deworming, spay/neuter
+            voucher at clinics, + online puppy course.
+          </p>
+        </div>
+        {/* Dogs */}
+        <div className="col-md-6 mb-4">
+          <h5>
+            Dogs (Over 1 year old){' '}
+            <span style={{ color: '#BAD648' }}>$350</span>
+          </h5>
+          <p style={{ fontSize: '0.9rem', color: '#EDEDED' }}>
+            Includes vaccines, deworming, spay/neuter voucher (if needed).
+          </p>
+        </div>
+        {/* Kittens */}
+        <div className="col-md-6 mb-4">
+          <h5>
+            Kittens (Under 1 year old){' '}
+            <span style={{ color: '#BAD648' }}>$175</span>
+          </h5>
+          <p style={{ fontSize: '0.9rem', color: '#EDEDED' }}>
+            Includes vaccines, deworming, spay/neuter voucher + kitten care
+            guide.
+          </p>
+        </div>
+        {/* Cats */}
+        <div className="col-md-6 mb-4">
+          <h5>
+            Cats (Over 1 year old){' '}
+            <span style={{ color: '#BAD648' }}>$100</span>
+          </h5>
+          <p style={{ fontSize: '0.9rem', color: '#EDEDED' }}>
+            Includes vaccines, deworming, spay/neuter voucher (if needed).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <hr style={{ borderColor: '#FFFFFF' }} />
+
+    {/* Approved Clinics */}
+    <div className="approved-clinics text-center mt-4">
+      <h4 className="section-subtitle mb-3" style={{ color: '#FFFFFF' }}>
+        Approved Clinics
+      </h4>
+      <ul
+        className="list-unstyled d-flex flex-wrap justify-content-center gap-2"
+      >
+        {[
+          'Virden Animal Hospital',
+          'Wheat City Brandon',
+          'Grand Valley Animal Clinic',
+          'Carberry Small Animal Vet Clinic',
+          'Minnedosa Veterinary Clinic',
+          'Boissevain Animal Clinic'
+        ].map((clinic) => (
+          <li
+            key={clinic}
+            className="clinic-item px-3 py-1 rounded"
+          >
+            {clinic}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+    </main>
   );
 };

@@ -241,6 +241,7 @@ export const AdminPage = () => {
               rows="3"
               value={form.biography}
               onChange={handleChange}
+              required
             />
           </div>
 

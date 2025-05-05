@@ -376,3 +376,178 @@ h1, h2, h3, h4, h5 {
 .btn-adopt-me:hover {
   background-color: #d0603f;
 }
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #bad648;
+  text-decoration: underline;
+  text-underline-offset: 4px; 
+  text-decoration-thickness: 2px;
+}
+
+/* HERO */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content {
+  position: relative;
+  color: #fff;
+}
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: 0.5rem;
+}
+.hero-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+.btn-hero {
+  background-color: #BAD648;
+  color: #073242;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+}
+.btn-hero:hover {
+  background-color: #93D1DA;
+  color: #fff;
+}
+
+/* MEET OUR PETS */
+.meet-pets {
+  background-color: #F9FAFB;
+  padding: 4rem 0;
+}
+.pet-card {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.pet-card:hover {
+  transform: translateY(-8px);
+}
+.pet-img {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+.pet-info {
+  background: #fff;
+  padding: 1rem;
+}
+.pet-info h5 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.25rem;
+}
+.pet-info p {
+  font-family: 'Lato', sans-serif;
+}
+
+/* STATS + HELP */
+.help-stats {
+  background-color: #fff;
+}
+.stats h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+  color: #BAD648;
+}
+.stats p {
+  color: #4F4F4F;
+  font-family: 'Lato', sans-serif;
+}
+.right-col {
+  gap: 2rem;
+}
+.help .section-title {
+  font-family: 'Poppins', sans-serif;
+  color: #073242;
+}
+.help .section-text {
+  font-family: 'Lato', sans-serif;
+  color: #4F4F4F;
+}
+
+/* Buttons */
+.btn-foster {
+  background-color: #BAD648;
+  border: none;
+  color: #073242;
+  font-family: 'Varela Round', sans-serif;
+}
+.btn-donate {
+  background-color: #E8744B;
+  border: none;
+  color: #fff;
+  font-family: 'Varela Round', sans-serif;
+}
+
+/* Vertical Steps */
+.steps-vertical .step-item h5 {
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+}
+.steps-vertical .step-item p {
+  font-family: 'Lato', sans-serif;
+  color: #EDEDED;
+}
+
+/* Clinic pills */
+.clinic-item {
+  background-color: #FFFFFF;
+  color: #231F20;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+}
+
+/* Step item container */
+.step-item {
+  gap: 1rem;
+}
+
+/* Number bubble */
+.step-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #BAD648;
+  color: #073242;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+/* Text next to the bubble */
+.step-text h5 {
+  font-family: 'Poppins', sans-serif;
+  color: #FFFFFF;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+.step-text p {
+  font-family: 'Lato', sans-serif;
+  color: #EDEDED;
+  font-size: 1rem;
+  line-height: 1.4;
+}
